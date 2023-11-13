@@ -25,7 +25,7 @@ class LessonController extends Controller
 
     public function delete(Request $request, Lesson $lesson)
     {
-        if( !$request->user()->cannot('delete', $lesson) ){
+        if( $request->user()->cannot('delete', $lesson) ){
             abort(Response::HTTP_FORBIDDEN);
         }
 
